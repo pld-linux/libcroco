@@ -1,6 +1,6 @@
 #
 # Conditional build:
-# _without_gnome	- without layout engine (which requires libgnomeui)
+%bcond_without	gnome	# without layout engine (which requires libgnomeui)
 #
 # NOTE: layeng could be separated, but pkg-config --libs libcroco returns
 #	all built libraries together...
@@ -14,11 +14,11 @@ License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libcroco/0.4/%{name}-%{version}.tar.bz2
 # Source0-md5:	0bb1d64abdd4d0b85f2896e01d67b214
-Patch0:		%{name}-am.patch
+Patch0:		%{name}-link.patch
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.0
-%{!?_without_gnome:BuildRequires:	libgnomeui-devel >= 2.3.3.1-2}
+%{?with_gnome:BuildRequires:	libgnomeui-devel >= 2.3.3.1-2}
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	libxml2-devel >= 2.4.23
 BuildRequires:	pango-devel >= 1.0.4
@@ -41,9 +41,8 @@ Requires:	%{name} = %{version}
 Requires:	glib2-devel >= 2.0
 # for seleng (but always reported by *-config)
 Requires:	libxml2-devel >= 2.4.23
-Requires:	pango-devel >= 1.0.4
 # for layeng (but always reported by *-config)
-%{!?_without_gnome:Requires:	libgnomeui-devel >= 2.3.3.1-2}
+%{?with_gnome:Requires:	libgnomeui-devel >= 2.3.3.1-2}
 
 %description devel
 This package provides the necessary header files files to allow you
@@ -67,7 +66,7 @@ Statyczna wersja biblioteki libcroco.
 
 %prep
 %setup -q
-#%patch -p1
+%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -77,7 +76,7 @@ Statyczna wersja biblioteki libcroco.
 %{__automake}
 %configure \
 	--enable-seleng=yes \
-	--enable-layeng=%{?_without_gnome:no}%{!?_without_gnome:yes}
+	--enable-layeng=%{?with_gnome:yes}%{!?with_gnome:no}
 
 %{__make}
 
