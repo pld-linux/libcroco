@@ -5,7 +5,7 @@ diff -aurN libcroco-0.6.0.orig/src/Makefile.am libcroco-0.6.0/src/Makefile.am
  
  lib_LTLIBRARIES=libcroco-0.6.la
  libcroco_0_6_la_SOURCES= $(SRCS)
-+libcroco_la_LIBADD = @GLIB2_LIBS@ @LIBXML2_LIBS@
++libcroco_0_6_la_LIBADD = @GLIB2_LIBS@ @LIBXML2_LIBS@
  
  INCLUDES=-I$(top_srcdir) -I$(top_srcdir)/intl \
  @GLIB2_CFLAGS@ @LIBXML2_CFLAGS@
