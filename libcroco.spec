@@ -1,12 +1,15 @@
+# 
+%define	_mver	0.6
+#
 Summary:	A CSS2 parsing library
 Summary(pl):	Biblioteka analizuj±ca CSS2
 Name:		libcroco
-Version:	0.5.1
-Release:	1
+Version:	%{_mver}.0
+Release:	0.1
 License:	LGPL
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	19e016a5533449a769662a116df7237c
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/%{_mver}/%{name}-%{version}.tar.bz2
+# Source0-md5:	78fb2bf78d469df83b1fc94ce196c1c4
 Patch0:		%{name}-link.patch
 BuildRequires:	autoconf >= 2.5
 BuildRequires:	automake
@@ -83,19 +86,19 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
-%attr(755,root,root) %{_bindir}/csslint
+%attr(755,root,root) %{_bindir}/csslint-%{_mver}
 %attr(755,root,root) %{_libdir}/lib*.so.*.*.*
-%{_mandir}/man1/csslint.1*
+#%%{_mandir}/man1/csslint.1*
 
 %files devel
 %defattr(644,root,root,755)
 %doc docs/usage.txt
-%attr(755,root,root) %{_bindir}/croco-config
+%attr(755,root,root) %{_bindir}/croco-%{_mver}-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-%{_includedir}/libcroco
-%{_pkgconfigdir}/libcroco.pc
-%{_mandir}/man1/croco-config.1*
+%{_includedir}/libcroco-%{_mver}
+%{_pkgconfigdir}/libcroco-%{_mver}.pc
+#%%{_mandir}/man1/croco-config.1*
 %{_examplesdir}/%{name}-%{version}
 
 %files static
