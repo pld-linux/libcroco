@@ -1,0 +1,70 @@
+--- libcroco-0.3.0/src/parser/Makefile.am.orig	2003-06-29 17:49:39.000000000 +0200
++++ libcroco-0.3.0/src/parser/Makefile.am	2003-07-17 19:51:59.000000000 +0200
+@@ -34,4 +34,4 @@
+ INCLUDES=-I$(top_srcdir) -I$(top_srcdir)/intl \
+ @GLIB2_CFLAGS@
+ libcroco_la_LDFLAGS=-version-info @LIBCROCO_VERSION_INFO@ \
+-@GLIB2_CFLAGS@
++@GLIB2_LIBS@
+--- libcroco-0.3.0/src/seleng/Makefile.am.orig	2003-06-29 17:49:40.000000000 +0200
++++ libcroco-0.3.0/src/seleng/Makefile.am	2003-07-17 19:55:52.000000000 +0200
+@@ -1,12 +1,12 @@
++if HAVE_SELENG
+ lib_LTLIBRARIES=libcrseleng.la
++endif
+ 
+ crselengincdir=$(includedir)/@PACKAGE@/seleng
+ crselenginc_HEADERS= *.h
+ 
+ #the selection engine files
+-if HAVE_SELENG
+ SELENG_SRCS= cr-style.c cr-sel-eng.c cr-fonts.c
+-endif
+ 
+ libcrseleng_la_SOURCES=$(SELENG_SRCS)
+ INCLUDES=-I$(top_srcdir) -I$(top_srcdir)/src/parser -I$(top_srcdir)/intl \
+@@ -14,4 +14,5 @@
+ 
+ LDADD=$(top_srcdir)/src/parser/libcroco.la
+ 
+-libcrseleng_la_LDFLAGS=-version-info @LIBCROCO_VERSION_INFO@ @LIBXML2_LIBS@
++libcrseleng_la_LDFLAGS=-version-info @LIBCROCO_VERSION_INFO@ @PANGO_LIBS@ @LIBXML2_LIBS@
++libcrseleng_la_LIBADD=$(top_srcdir)/src/parser/@CROCO_PARSER_LIB@
+--- libcroco-0.3.0/src/layeng/Makefile.am.orig	2003-06-29 17:49:38.000000000 +0200
++++ libcroco-0.3.0/src/layeng/Makefile.am	2003-07-17 19:55:32.000000000 +0200
+@@ -1,20 +1,20 @@
++if HAVE_LAYENG
+ lib_LTLIBRARIES=libcrlayeng.la
++endif
+ 
+ crlayengincdir=$(includedir)/@PACKAGE@/layeng
+ crlayenginc_HEADERS= *.h
+ 
+ #the layout engine files
+-if HAVE_LAYENG
+ LAYENG_SRCS= cr-box.c cr-box-view.c cr-lay-eng.c
+-endif
+ 
+ libcrlayeng_la_SOURCES=$(LAYENG_SRCS)
+ INCLUDES=-I$(top_srcdir) -I$(top_srcdir)/src/parser \
+ -I$(top_srcdir)/src/seleng -I$(top_srcdir)/intl \
+ @GLIB2_CFLAGS@ @LIBXML2_CFLAGS@ @LIBGNOMEUI2_CFLAGS@
+ 
+-LDADD=$(top_srcdir)/src/parser/@CROCO_PARSER_LIB@
++LDADD=$(top_srcdir)/src/parser/@CROCO_PARSER_LIB@ $(top_srcdir)/src/seleng/@CROCO_SELENG_LIB@
+ 
+ libcrlayeng_la_LDFLAGS=-version-info @LIBCROCO_VERSION_INFO@ \
+-$(top_srcdir)/src/seleng/@CROCO_SELENG_LIB@ @LIBXML2_LIBS@ \
++@LIBXML2_LIBS@ \
+ @LIBGNOMEUI2_LIBS@
+--- libcroco-0.3.0/csslint/Makefile.am.orig	2003-06-29 17:49:36.000000000 +0200
++++ libcroco-0.3.0/csslint/Makefile.am	2003-07-17 19:00:22.000000000 +0200
+@@ -20,7 +20,7 @@
+ 	-I$(top_srcdir)/src/parser \
+ 	-I$(top_srcdir)/src/seleng \
+ 	-I$(top_srcdir)/src/layeng \
+-	@GLIB2_CFLAGS@ @LIBXML2_CFLAGS@ @LIBGNOMEUI2_CFLAGS@
++	@GLIB2_CFLAGS@ @PANGO_CFLAGS@ @LIBXML2_CFLAGS@ @LIBGNOMEUI2_CFLAGS@
+ 
+ AM_CFLAGS=$(INCLUDES)
+ 
