@@ -1,13 +1,14 @@
---- libcroco-0.5.0/src/Makefile.am.orig	2004-02-29 01:18:00.000000000 +0100
-+++ libcroco-0.5.0/src/Makefile.am	2004-03-18 23:05:08.892086376 +0100
-@@ -81,8 +81,8 @@
+diff -aurN libcroco-0.6.0.orig/src/Makefile.am libcroco-0.6.0/src/Makefile.am
+--- libcroco-0.6.0.orig/src/Makefile.am	2004-06-09 00:57:27.000000000 +0200
++++ libcroco-0.6.0/src/Makefile.am	2004-06-09 21:11:06.278702384 +0200
+@@ -88,8 +88,8 @@
  
- lib_LTLIBRARIES=libcroco.la
- libcroco_la_SOURCES= $(SRCS)
+ lib_LTLIBRARIES=libcroco-0.6.la
+ libcroco_0_6_la_SOURCES= $(SRCS)
 +libcroco_la_LIBADD = @GLIB2_LIBS@ @LIBXML2_LIBS@
  
  INCLUDES=-I$(top_srcdir) -I$(top_srcdir)/intl \
  @GLIB2_CFLAGS@ @LIBXML2_CFLAGS@
--libcroco_la_LDFLAGS=-version-info @LIBCROCO_VERSION_INFO@ \
+-libcroco_0_6_la_LDFLAGS=-version-info @LIBCROCO_VERSION_INFO@ \
 -@GLIB2_CFLAGS@
-+libcroco_la_LDFLAGS=-version-info @LIBCROCO_VERSION_INFO@
++libcroco_0_6_la_LDFLAGS=-version-info @LIBCROCO_VERSION_INFO@
