@@ -39,7 +39,11 @@ Summary(pl):	Pliki nag³ówkowe do tworzenia programów u¿ywaj±cych libcroco
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	glib2-devel >= 2.0
+# for seleng (but always reported by *-config)
 Requires:	libxml2-devel >= 2.4.23
+Requires:	pango-devel >= 1.0.4
+# for layeng (but always reported by *-config)
+%{!?_without_gnome:Requires:	libgnomeui-devel >= 2.0.3}
 
 %description devel
 This package provides the necessary header files files to allow you
