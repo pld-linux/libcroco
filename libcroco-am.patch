@@ -51,7 +51,7 @@
  @GLIB2_CFLAGS@ @LIBXML2_CFLAGS@ @LIBGNOMEUI2_CFLAGS@
  
 -LDADD=$(top_srcdir)/src/parser/@CROCO_PARSER_LIB@
-+LDADD=$(top_srcdir)/src/parser/@CROCO_PARSER_LIB@ $(top_srcdir)/src/seleng/@CROCO_SELENG_LIB@
++libcrlayeng_la_LIBADD=$(top_srcdir)/src/parser/@CROCO_PARSER_LIB@ $(top_srcdir)/src/seleng/@CROCO_SELENG_LIB@
  
  libcrlayeng_la_LDFLAGS=-version-info @LIBCROCO_VERSION_INFO@ \
 -$(top_srcdir)/src/seleng/@CROCO_SELENG_LIB@ @LIBXML2_LIBS@ \
