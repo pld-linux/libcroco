@@ -1,4 +1,3 @@
-
 Summary:	A CSS2 parsing library
 Summary(pl):	Biblioteka analizuj±ca CSS2
 Name:		libcroco
@@ -41,7 +40,7 @@ oprogramowania korzystaj±cego z libcroco.
 Summary:	Static version of libcroco library
 Summary(pl):	Statyczna wersja biblioteki libcroco
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of libcroco library.
@@ -54,7 +53,6 @@ Statyczna wersja biblioteki libcroco.
 
 %build
 %configure
-
 %{__make}
 
 %install
