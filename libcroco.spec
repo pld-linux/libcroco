@@ -7,7 +7,11 @@ License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libcroco/0.5/%{name}-%{version}.tar.bz2
 # Source0-md5:	2b152b07e87d448f6678ccb066afdc58
+Patch0:		%{name}-link.patch
+BuildRequires:	autoconf >= 2.5
+BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.0
+BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.4.23
 BuildRequires:	pkgconfig >= 0.8
 Requires:	glib2 >= 2.0
@@ -50,10 +54,14 @@ Statyczna wersja biblioteki libcroco.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-cp /usr/share/automake/config.sub .
-
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure
 
 %{__make}
@@ -65,7 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-install docs/examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+install docs/examples/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
