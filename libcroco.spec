@@ -52,7 +52,10 @@ Statyczna wersja biblioteki libcroco.
 %setup -q
 
 %build
+cp /usr/share/automake/config.sub .
+
 %configure
+
 %{__make}
 
 %install
