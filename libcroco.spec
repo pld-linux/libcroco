@@ -1,27 +1,15 @@
-#
-# Conditional build:
-%bcond_without	gnome	# without layout engine (which requires libgnomeui)
-#
-# NOTE: layeng could be separated, but pkg-config --libs libcroco returns
-#	all built libraries together...
-#
+
 Summary:	A CSS2 parsing library
 Summary(pl):	Biblioteka analizuj±ca CSS2
 Name:		libcroco
-Version:	0.4.0
+Version:	0.5.0
 Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/libcroco/0.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	0bb1d64abdd4d0b85f2896e01d67b214
-Patch0:		%{name}-link.patch
-BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
+Source0:	http://ftp.gnome.org/pub/gnome/sources/libcroco/0.5/%{name}-%{version}.tar.bz2
+# Source0-md5:	2b152b07e87d448f6678ccb066afdc58
 BuildRequires:	glib2-devel >= 2.0
-%{?with_gnome:BuildRequires:	libgnomeui-devel >= 2.3.3.1-2}
-BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	libxml2-devel >= 2.4.23
-BuildRequires:	pango-devel >= 1.0.4
 BuildRequires:	pkgconfig >= 0.8
 Requires:	glib2 >= 2.0
 Requires:	libxml2 >= 2.4.23
@@ -37,12 +25,9 @@ Biblioteka analizuj±ca i obrabiaj±ca CSS2 dla GNOME.
 Summary:	Header files for developing with libcroco
 Summary(pl):	Pliki nag³ówkowe do tworzenia programów u¿ywaj±cych libcroco
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 2.0
-# for seleng (but always reported by *-config)
 Requires:	libxml2-devel >= 2.4.23
-# for layeng (but always reported by *-config)
-%{?with_gnome:Requires:	libgnomeui-devel >= 2.3.3.1-2}
 
 %description devel
 This package provides the necessary header files files to allow you
@@ -66,17 +51,9 @@ Statyczna wersja biblioteki libcroco.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	--enable-seleng=yes \
-	--enable-layeng=%{?with_gnome:yes}%{!?with_gnome:no}
+%configure
 
 %{__make}
 
