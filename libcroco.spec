@@ -16,7 +16,7 @@ BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.4.23
-BuildRequires:	pkgconfig >= 0.8
+BuildRequires:	pkgconfig >= 1:0.8
 Requires:	glib2 >= 2.0
 Requires:	libxml2 >= 2.4.23
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
