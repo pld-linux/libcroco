@@ -1,12 +1,11 @@
 #
-# TODO: fix libcroco linking (missing -lglib-2.0 -lxml2 in libcroco)
 %define	_mver	0.6
 #
 Summary:	A CSS2 parsing library
 Summary(pl):	Biblioteka analizuj±ca CSS2
 Name:		libcroco
 Version:	%{_mver}.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libcroco/%{_mver}/%{name}-%{version}.tar.bz2
