@@ -1,0 +1,30 @@
+--- libcroco-0.4.0/src/parser/Makefile.am.orig	Thu Dec 11 14:47:06 2003
++++ libcroco-0.4.0/src/parser/Makefile.am	Wed Dec 17 10:11:51 2003
+@@ -71,4 +71,4 @@
+ INCLUDES=-I$(top_srcdir) -I$(top_srcdir)/intl \
+ @GLIB2_CFLAGS@
+ libcroco_la_LDFLAGS=-version-info @LIBCROCO_VERSION_INFO@ \
+-@GLIB2_CFLAGS@
++@GLIB2_LIBS@
+--- libcroco-0.4.0/src/seleng/Makefile.am.orig	Thu Dec 11 16:37:42 2003
++++ libcroco-0.4.0/src/seleng/Makefile.am	Wed Dec 17 10:12:57 2003
+@@ -16,3 +16,4 @@
+ LDADD=$(top_srcdir)/src/parser/libcroco.la
+ endif
+ libcrseleng_la_LDFLAGS=-version-info @LIBCRSELENG_VERSION_INFO@ @LIBXML2_LIBS@
++libcrseleng_la_LIBADD=$(top_builddir)/src/parser/@CROCO_PARSER_LIB@
+--- libcroco-0.4.0/src/layeng/Makefile.am.orig	Thu Dec 11 19:55:11 2003
++++ libcroco-0.4.0/src/layeng/Makefile.am	Wed Dec 17 10:14:46 2003
+@@ -12,11 +12,11 @@
+ -I$(top_srcdir)/src/seleng -I$(top_srcdir)/intl \
+ @GLIB2_CFLAGS@ @LIBXML2_CFLAGS@ @LIBGNOMEUI2_CFLAGS@
+ 
+-LDADD=$(top_srcdir)/src/parser/@CROCO_PARSER_LIB@
+ endif
+ #libcrlayeng_la_LDFLAGS=-version-info @LIBCRLAYENG_VERSION_INFO@ \
+ #$(top_srcdir)/src/seleng/@CROCO_SELENG_LIB@ @LIBXML2_LIBS@ \
+ #@LIBGNOMEUI2_LIBS@
+ 
++libcrlayeng_la_LIBADD=$(top_srcdir)/src/parser/@CROCO_PARSER_LIB@ $(top_srcdir)/src/seleng/@CROCO_SELENG_LIB@
+ libcrlayeng_la_LDFLAGS=-version-info @LIBCRLAYENG_VERSION_INFO@ \
+ @LIBXML2_LIBS@ @LIBGNOMEUI2_LIBS@
