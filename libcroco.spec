@@ -9,7 +9,7 @@ Summary:	A CSS2 parsing library
 Summary(pl):	Biblioteka analizuj±ca CSS2
 Name:		libcroco
 Version:	0.3.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libcroco/0.3/%{name}-%{version}.tar.bz2
@@ -18,7 +18,7 @@ Patch0:		%{name}-am.patch
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.0
-%{!?_without_gnome:BuildRequires:	libgnomeui-devel >= 2.0.3}
+%{!?_without_gnome:BuildRequires:	libgnomeui-devel >= 2.3.3.1-2}
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	libxml2-devel >= 2.4.23
 BuildRequires:	pango-devel >= 1.0.4
@@ -43,7 +43,7 @@ Requires:	glib2-devel >= 2.0
 Requires:	libxml2-devel >= 2.4.23
 Requires:	pango-devel >= 1.0.4
 # for layeng (but always reported by *-config)
-%{!?_without_gnome:Requires:	libgnomeui-devel >= 2.0.3}
+%{!?_without_gnome:Requires:	libgnomeui-devel >= 2.3.3.1-2}
 
 %description devel
 This package provides the necessary header files files to allow you
