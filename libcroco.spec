@@ -1,7 +1,9 @@
 #
 %define	_mver	0.6
 #
+# Conditional build:
 %bcond_without	static_libs	# don't build static library
+#
 Summary:	A CSS2 parsing library
 Summary(pl):	Biblioteka analizuj±ca CSS2
 Name:		libcroco
