@@ -1,6 +1,7 @@
 #
 %define	_mver	0.6
 #
+%bcond_without	static_libs	# don't build static library
 Summary:	A CSS2 parsing library
 Summary(pl):	Biblioteka analizuj±ca CSS2
 Name:		libcroco
@@ -65,7 +66,8 @@ Statyczna wersja biblioteki libcroco.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	%{!?with_static_libs:--disable-static}
 %{__make}
 
 %install
@@ -101,6 +103,8 @@ rm -rf $RPM_BUILD_ROOT
 #%%{_mandir}/man1/croco-config.1*
 %{_examplesdir}/%{name}-%{version}
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%endif
