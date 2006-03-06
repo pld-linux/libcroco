@@ -1,5 +1,5 @@
 #
-%define	_mver	0.6
+%define		_mver	0.6
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
@@ -7,12 +7,12 @@
 Summary:	A CSS2 parsing library
 Summary(pl):	Biblioteka analizuj±ca CSS2
 Name:		libcroco
-Version:	%{_mver}.0
-Release:	2
+Version:	%{_mver}.1
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libcroco/%{_mver}/%{name}-%{version}.tar.bz2
-# Source0-md5:	78fb2bf78d469df83b1fc94ce196c1c4
+# Source0-md5:	b0975bd01eb11964f1b3f254f267a43d
 Patch0:		%{name}-link.patch
 BuildRequires:	autoconf >= 2.5
 BuildRequires:	automake
