@@ -8,7 +8,7 @@ Summary:	A CSS2 parsing library
 Summary(pl):	Biblioteka analizuj±ca CSS2
 Name:		libcroco
 Version:	%{_mver}.1
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libcroco/%{_mver}/%{name}-%{version}.tar.bz2
@@ -16,12 +16,12 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/libcroco/%{_mver}/%{name}-%{vers
 Patch0:		%{name}-link.patch
 BuildRequires:	autoconf >= 2.5
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 2.0
+BuildRequires:	glib2-devel >= 1:2.12.0
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 2.4.23
+BuildRequires:	libxml2-devel >= 1:2.6.26
 BuildRequires:	pkgconfig >= 1:0.8
-Requires:	glib2 >= 2.0
-Requires:	libxml2 >= 2.4.23
+Requires:	glib2 >= 1:2.12.0
+Requires:	libxml2 >= 1:2.6.26
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -35,8 +35,8 @@ Summary:	Header files for developing with libcroco
 Summary(pl):	Pliki nag³ówkowe do tworzenia programów u¿ywaj±cych libcroco
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 2.0
-Requires:	libxml2-devel >= 2.4.23
+Requires:	glib2-devel >= 1:2.12.0
+Requires:	libxml2-devel >= 1:2.6.26
 
 %description devel
 This package provides the necessary header files files to allow you
@@ -68,6 +68,7 @@ Statyczna wersja biblioteki libcroco.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
+LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	%{!?with_static_libs:--disable-static}
 %{__make}
