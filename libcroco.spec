@@ -5,7 +5,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	A CSS2 parsing library
-Summary(pl):	Biblioteka analizuj±ca CSS2
+Summary(pl.UTF-8):   Biblioteka analizujÄ…ca CSS2
 Name:		libcroco
 Version:	%{_mver}.1
 Release:	3
@@ -27,12 +27,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 CSS2 parsing and manipulation library for GNOME.
 
-%description -l pl
-Biblioteka analizuj±ca i obrabiaj±ca CSS2 dla GNOME.
+%description -l pl.UTF-8
+Biblioteka analizujÄ…ca i obrabiajÄ…ca CSS2 dla GNOME.
 
 %package devel
 Summary:	Header files for developing with libcroco
-Summary(pl):	Pliki nag³ówkowe do tworzenia programów u¿ywaj±cych libcroco
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe do tworzenia programÃ³w uÅ¼ywajÄ…cych libcroco
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.12.0
@@ -42,20 +42,20 @@ Requires:	libxml2-devel >= 1:2.6.26
 This package provides the necessary header files files to allow you
 to develop with libcroco.
 
-%description devel -l pl
-Ten pakiet dostarcza pliki nag³ówkowe potrzebne do tworzenia
-oprogramowania korzystaj±cego z libcroco.
+%description devel -l pl.UTF-8
+Ten pakiet dostarcza pliki nagÅ‚Ã³wkowe potrzebne do tworzenia
+oprogramowania korzystajÄ…cego z libcroco.
 
 %package static
 Summary:	Static version of libcroco library
-Summary(pl):	Statyczna wersja biblioteki libcroco
+Summary(pl.UTF-8):   Statyczna wersja biblioteki libcroco
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of libcroco library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna wersja biblioteki libcroco.
 
 %prep
