@@ -5,7 +5,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	A CSS2 parsing library
-Summary(pl.UTF-8):   Biblioteka analizująca CSS2
+Summary(pl.UTF-8):	Biblioteka analizująca CSS2
 Name:		libcroco
 Version:	%{_mver}.1
 Release:	3
@@ -32,7 +32,7 @@ Biblioteka analizująca i obrabiająca CSS2 dla GNOME.
 
 %package devel
 Summary:	Header files for developing with libcroco
-Summary(pl.UTF-8):   Pliki nagłówkowe do tworzenia programów używających libcroco
+Summary(pl.UTF-8):	Pliki nagłówkowe do tworzenia programów używających libcroco
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.12.0
@@ -48,7 +48,7 @@ oprogramowania korzystającego z libcroco.
 
 %package static
 Summary:	Static version of libcroco library
-Summary(pl.UTF-8):   Statyczna wersja biblioteki libcroco
+Summary(pl.UTF-8):	Statyczna wersja biblioteki libcroco
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
