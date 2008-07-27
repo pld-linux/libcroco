@@ -8,7 +8,7 @@ Summary:	A CSS2 parsing library
 Summary(pl.UTF-8):	Biblioteka analizująca CSS2
 Name:		libcroco
 Version:	%{_mver}.1
-Release:	3
+Release:	4
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libcroco/%{_mver}/%{name}-%{version}.tar.bz2
