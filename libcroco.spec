@@ -7,12 +7,12 @@
 Summary:	A CSS2 parsing library
 Summary(pl.UTF-8):	Biblioteka analizująca CSS2
 Name:		libcroco
-Version:	%{_mver}.1
-Release:	4
-License:	LGPL
+Version:	0.6.2
+Release:	1
+License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/libcroco/%{_mver}/%{name}-%{version}.tar.bz2
-# Source0-md5:	b0975bd01eb11964f1b3f254f267a43d
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libcroco/0.6/%{name}-%{version}.tar.bz2
+# Source0-md5:	1429c597aa4b75fc610ab3a542c99209
 Patch0:		%{name}-link.patch
 BuildRequires:	autoconf >= 2.5
 BuildRequires:	automake
@@ -39,8 +39,8 @@ Requires:	glib2-devel >= 1:2.12.0
 Requires:	libxml2-devel >= 1:2.6.26
 
 %description devel
-This package provides the necessary header files files to allow you
-to develop with libcroco.
+This package provides the necessary header files files to allow you to
+develop with libcroco.
 
 %description devel -l pl.UTF-8
 Ten pakiet dostarcza pliki nagłówkowe potrzebne do tworzenia
@@ -74,11 +74,11 @@ Statyczna wersja biblioteki libcroco.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 install docs/examples/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
@@ -91,22 +91,21 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/csslint-%{_mver}
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
-#%%{_mandir}/man1/csslint.1*
+%attr(755,root,root) %{_libdir}/libcroco-%{_mver}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libcroco-%{_mver}.so.3
 
 %files devel
 %defattr(644,root,root,755)
 %doc docs/usage.txt
 %attr(755,root,root) %{_bindir}/croco-%{_mver}-config
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libcroco-%{_mver}.so
+%{_libdir}/libcroco-%{_mver}.la
 %{_includedir}/libcroco-%{_mver}
 %{_pkgconfigdir}/libcroco-%{_mver}.pc
-#%%{_mandir}/man1/croco-config.1*
 %{_examplesdir}/%{name}-%{version}
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libcroco-%{_mver}.a
 %endif
