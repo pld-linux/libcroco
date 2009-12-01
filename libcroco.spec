@@ -17,6 +17,7 @@ Patch0:		%{name}-link.patch
 BuildRequires:	autoconf >= 2.5
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 1:2.12.0
+BuildRequires:	gtk-doc-automake
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.26
 BuildRequires:	pkgconfig >= 1:0.8
