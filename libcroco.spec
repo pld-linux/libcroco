@@ -6,20 +6,23 @@
 Summary:	A CSS2 parsing library
 Summary(pl.UTF-8):	Biblioteka analizująca CSS2
 Name:		libcroco
-Version:	0.6.2
+Version:	0.6.3
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libcroco/0.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	1429c597aa4b75fc610ab3a542c99209
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libcroco/0.6/%{name}-%{version}.tar.xz
+# Source0-md5:	3f687747728ca5eaf9b42d9d4bd2cd53
 Patch0:		%{name}-link.patch
 BuildRequires:	autoconf >= 2.5
-BuildRequires:	automake
+BuildRequires:	automake >= 1:1.9
 BuildRequires:	glib2-devel >= 1:2.12.0
-BuildRequires:	gtk-doc-automake
+BuildRequires:	gtk-doc >= 1.0
+BuildRequires:	gtk-doc-automake >= 1.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.26
 BuildRequires:	pkgconfig >= 1:0.8
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Requires:	glib2 >= 1:2.12.0
 Requires:	libxml2 >= 1:2.6.26
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -69,7 +72,8 @@ Statyczna wersja biblioteki libcroco.
 %{__autoheader}
 %{__automake}
 %configure \
-	%{!?with_static_libs:--disable-static}
+	%{!?with_static_libs:--disable-static} \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -103,6 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/libcroco-%{_mver}
 %{_pkgconfigdir}/libcroco-%{_mver}.pc
 %{_examplesdir}/%{name}-%{version}
+%{_gtkdocdir}/libcroco
 
 %if %{with static_libs}
 %files static
