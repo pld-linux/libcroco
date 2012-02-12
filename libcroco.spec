@@ -2,23 +2,22 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 
-%define		_mver	0.6
+%define		mver	0.6
 Summary:	A CSS2 parsing library
 Summary(pl.UTF-8):	Biblioteka analizująca CSS2
 Name:		libcroco
-Version:	0.6.3
+Version:	0.6.4
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libcroco/0.6/%{name}-%{version}.tar.xz
-# Source0-md5:	3f687747728ca5eaf9b42d9d4bd2cd53
-Patch0:		%{name}-link.patch
+# Source0-md5:	d49c20f1e9d9c85ac55429cd952af909
 BuildRequires:	autoconf >= 2.5
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	glib2-devel >= 1:2.12.0
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	gtk-doc-automake >= 1.0
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2.0
 BuildRequires:	libxml2-devel >= 1:2.6.26
 BuildRequires:	pkgconfig >= 1:0.8
 BuildRequires:	tar >= 1:1.22
@@ -63,7 +62,6 @@ Statyczna wersja biblioteki libcroco.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -72,6 +70,7 @@ Statyczna wersja biblioteki libcroco.
 %{__autoheader}
 %{__automake}
 %configure \
+	--disable-silent-rules \
 	%{!?with_static_libs:--disable-static} \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
@@ -94,23 +93,23 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
-%attr(755,root,root) %{_bindir}/csslint-%{_mver}
-%attr(755,root,root) %{_libdir}/libcroco-%{_mver}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libcroco-%{_mver}.so.3
+%attr(755,root,root) %{_bindir}/csslint-%{mver}
+%attr(755,root,root) %{_libdir}/libcroco-%{mver}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libcroco-%{mver}.so.3
 
 %files devel
 %defattr(644,root,root,755)
 %doc docs/usage.txt
-%attr(755,root,root) %{_bindir}/croco-%{_mver}-config
-%attr(755,root,root) %{_libdir}/libcroco-%{_mver}.so
-%{_libdir}/libcroco-%{_mver}.la
-%{_includedir}/libcroco-%{_mver}
-%{_pkgconfigdir}/libcroco-%{_mver}.pc
+%attr(755,root,root) %{_bindir}/croco-%{mver}-config
+%attr(755,root,root) %{_libdir}/libcroco-%{mver}.so
+%{_libdir}/libcroco-%{mver}.la
+%{_includedir}/libcroco-%{mver}
+%{_pkgconfigdir}/libcroco-%{mver}.pc
 %{_examplesdir}/%{name}-%{version}
 %{_gtkdocdir}/libcroco
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libcroco-%{_mver}.a
+%{_libdir}/libcroco-%{mver}.a
 %endif
