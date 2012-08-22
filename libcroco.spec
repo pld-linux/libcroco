@@ -7,7 +7,7 @@ Summary:	A CSS2 parsing library
 Summary(pl.UTF-8):	Biblioteka analizująca CSS2
 Name:		libcroco
 Version:	0.6.5
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libcroco/0.6/%{name}-%{version}.tar.xz
@@ -84,6 +84,8 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 install docs/examples/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -102,7 +104,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc docs/usage.txt
 %attr(755,root,root) %{_bindir}/croco-%{mver}-config
 %attr(755,root,root) %{_libdir}/libcroco-%{mver}.so
-%{_libdir}/libcroco-%{mver}.la
 %{_includedir}/libcroco-%{mver}
 %{_pkgconfigdir}/libcroco-%{mver}.pc
 %{_examplesdir}/%{name}-%{version}
